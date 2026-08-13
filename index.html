@@ -1,0 +1,415 @@
+<!DOCTYPE html><html lang="es" data-lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Apartamentos Paradise Stay</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }body {
+  font-family: 'Poppins', sans-serif;
+  background: #f5f7fa;
+  color: #333;
+}
+
+header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(6px);
+  padding: 15px 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h1 {
+  color: white;
+  font-size: 1.8rem;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin-left: 20px;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  color: #f1c40f;
+}
+
+.hero {
+  height: 100vh;
+  background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+  url('https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=1600&auto=format&fit=crop') center/cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  padding: 20px;
+}
+
+.hero-content h2 {
+  font-size: 3.5rem;
+  margin-bottom: 20px;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 14px 30px;
+  background: #f1c40f;
+  color: black;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+  background: #ffdd33;
+}
+
+section {
+  padding: 90px 8%;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.title h2 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.apartments {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.card {
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
+.card img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+}
+
+.card-content {
+  padding: 20px;
+}
+
+.card-content h3 {
+  margin-bottom: 10px;
+}
+
+.services {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  text-align: center;
+}
+
+.service-box {
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+}
+
+.gallery img {
+  width: 100%;
+  border-radius: 15px;
+  height: 250px;
+  object-fit: cover;
+  transition: 0.3s;
+}
+
+.gallery img:hover {
+  transform: scale(1.03);
+}
+
+.booking {
+  background: white;
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  max-width: 800px;
+  margin: auto;
+}
+
+form {
+  display: grid;
+  gap: 20px;
+}
+
+input, textarea, select {
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+}
+
+.map {
+  margin-top: 50px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+footer {
+  background: #111;
+  color: white;
+  text-align: center;
+  padding: 30px;
+}
+
+.whatsapp {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  background: #25D366;
+  color: white;
+  padding: 18px 22px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+@media(max-width: 768px) {
+  header {
+    flex-direction: column;
+  }
+
+  nav {
+    margin-top: 10px;
+  }
+
+  .hero-content h2 {
+    font-size: 2.2rem;
+  }
+}
+
+  </style>
+</head>
+<body><header>
+  <div style="display:flex;align-items:center;gap:15px;"><select id="languageSwitcher" style="padding:8px;border-radius:10px;border:none;">
+  <option value="es">ES</option>
+  <option value="en">EN</option>
+  <option value="fr">FR</option>
+</select>
+
+  </div>
+  <h1>Paradise Stay</h1>
+  <nav>
+    <a href="#inicio">Inicio</a>
+    <a href="#apartamentos">Apartamentos</a>
+    <a href="#servicios">Servicios</a>
+    <a href="#galeria">Galería</a>
+    <a href="#reservas">Reservas</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+</header><section class="hero" id="inicio">
+  <div class="hero-content">
+    <h2>Apartamentos Turísticos de Lujo</h2>
+    <p>Disfruta de una experiencia única con comodidad, diseño y ubicación premium.</p>
+    <a href="#reservas" class="btn">Reservar Ahora</a>
+  </div>
+</section><section id="apartamentos">
+  <div class="title">
+    <h2>Nuestros Apartamentos</h2>
+    <p>Espacios modernos diseñados para tu descanso.</p>
+  </div>  <div class="apartments">
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?q=80&w=1200&auto=format&fit=crop" alt="Apartamento">
+      <div class="card-content">
+        <h3>Suite Deluxe</h3>
+        <p>2 habitaciones, jacuzzi, terraza y vistas increíbles.</p>
+      </div>
+    </div><div class="card">
+  <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=1200&auto=format&fit=crop" alt="Apartamento">
+  <div class="card-content">
+    <h3>Family Premium</h3>
+    <p>Perfecto para familias con cocina completa y salón amplio.</p>
+  </div>
+</div>
+
+<div class="card">
+  <img src="https://images.unsplash.com/photo-1494526585095-c41746248156?q=80&w=1200&auto=format&fit=crop" alt="Apartamento">
+  <div class="card-content">
+    <h3>Studio Modern</h3>
+    <p>Ideal para parejas, moderno y acogedor.</p>
+  </div>
+</div>
+
+  </div>
+</section><section id="servicios">
+  <div class="title">
+    <h2>Servicios</h2>
+    <p>Todo lo necesario para una estancia perfecta.</p>
+  </div>  <div class="services">
+    <div class="service-box">
+      <h3>WiFi Gratis</h3>
+      <p>Internet de alta velocidad en todos los apartamentos.</p>
+    </div><div class="service-box">
+  <h3>Piscina</h3>
+  <p>Zona exclusiva con piscina y solárium.</p>
+</div>
+
+<div class="service-box">
+  <h3>Parking</h3>
+  <p>Aparcamiento privado para clientes.</p>
+</div>
+
+<div class="service-box">
+  <h3>Check-in 24h</h3>
+  <p>Acceso flexible a cualquier hora.</p>
+</div>
+
+  </div>
+</section><section id="galeria">
+  <div class="title">
+    <h2>Galería</h2>
+    <p>Conoce nuestros espacios.</p>
+  </div>  <div class="gallery">
+    <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=1600&auto=format&fit=crop" alt="Luxury Apartment">
+    <img src="https://images.unsplash.com/photo-1494526585095-c41746248156?q=80&w=1600&auto=format&fit=crop" alt="Modern Living Room">
+    <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?q=80&w=1200&auto=format&fit=crop" alt="">
+    <img src="https://images.unsplash.com/photo-1484154218962-a197022b5858?q=80&w=1200&auto=format&fit=crop" alt="">
+    <img src="https://images.unsplash.com/photo-1494526585095-c41746248156?q=80&w=1200&auto=format&fit=crop" alt="">
+    <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=1200&auto=format&fit=crop" alt="">
+  </div>
+</section><section id="reservas">
+  <div class="title">
+    <h2>Reserva tu estancia</h2>
+    <p>Completa el formulario y te contactaremos.</p>
+  </div>  <div class="booking">
+    <form id="bookingForm">
+      <input type="text" placeholder="Nombre completo" required>
+      <input type="email" placeholder="Correo electrónico" required>
+      <input type="date" required>
+      <input type="date" required><select>
+    <option>Selecciona apartamento</option>
+    <option>Suite Deluxe</option>
+    <option>Family Premium</option>
+    <option>Studio Modern</option>
+  </select>
+
+  <textarea rows="5" placeholder="Mensaje adicional"></textarea>
+
+  <button type="submit" class="btn">Reservar y Pagar</button>
+  <div id="bookingMessage" style="font-weight:bold;color:green;"></div>
+</form>
+
+  </div>
+</section><section id="contacto">
+  <div class="title">
+    <h2>Contacto</h2>
+    <p>Estamos disponibles para ayudarte.</p>
+  </div>  <div style="text-align:center; font-size:1.1rem;">
+    <p>📧 info@paradisestay.com</p>
+    <p>📞 +34 600 000 000</p>
+    <p>📍 Madrid, España</p>
+  </div>  <div class="map">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3038.308563791875!2d-3.703790384603421!3d40.41677597936586!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd42287d6f6d2f6d%3A0x6f4d2f3c2d5d2f3!2sMadrid!5e0!3m2!1ses!2ses!4v1616161616161!5m2!1ses!2ses"
+      width="100%"
+      height="400"
+      style="border:0;"
+      allowfullscreen=""
+      loading="lazy">
+    </iframe>
+  </div>
+</section><section style="padding:40px 8%;background:#fff;">
+  <div class="title">
+    <h2>Reserva por WhatsApp</h2>
+    <p>Contacta directamente con nuestro equipo.</p>
+  </div>  <div style="text-align:center;">
+    <a href="https://wa.me/34600000000?text=Hola%20quiero%20reservar%20un%20apartamento" class="btn" target="_blank">
+      Reservar por WhatsApp
+    </a>
+  </div>
+</section><footer>
+  <p>© 2026 Paradise Stay | Todos los derechos reservados</p>
+</footer><a class="whatsapp" href="https://wa.me/34600000000" target="_blank">
+  WhatsApp
+</a><script>
+const translations = {
+  es: {
+    hero: 'Apartamentos Turísticos de Lujo',
+    reserve: 'Reservar Ahora'
+  },
+  en: {
+    hero: 'Luxury Tourist Apartments',
+    reserve: 'Book Now'
+  },
+  fr: {
+    hero: 'Appartements Touristiques de Luxe',
+    reserve: 'Réserver Maintenant'
+  }
+};
+
+const langSwitcher = document.getElementById('languageSwitcher');
+const heroTitle = document.querySelector('.hero-content h2');
+const reserveBtn = document.querySelector('.hero-content .btn');
+
+langSwitcher.addEventListener('change', () => {
+  const lang = langSwitcher.value;
+  heroTitle.textContent = translations[lang].hero;
+  reserveBtn.textContent = translations[lang].reserve;
+});
+
+const bookingForm = document.getElementById('bookingForm');
+bookingForm.addEventListener('submit', function(e){
+  e.preventDefault();
+
+  const message = document.getElementById('bookingMessage');
+  message.innerHTML = '✅ Reserva enviada correctamente. Redirigiendo al pago seguro...';
+
+  setTimeout(() => {
+    window.open('https://checkout.stripe.com/', '_blank');
+  }, 1500);
+});
+</script></body>
+</html>
