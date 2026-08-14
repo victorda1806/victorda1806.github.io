@@ -51,7 +51,7 @@ nav a:hover {
 .hero {
   height: 100vh;
   background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
-  url('https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=1600&auto=format&fit=crop') center/cover;
+  url('fotos/apartamento-a/salon-1.jpeg') center/cover;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -231,7 +231,14 @@ footer {
   }
 }
 
-  </style>
+  
+/* Visor de imágenes */
+.image-modal{display:none;position:fixed;z-index:3000;inset:0;background:rgba(0,0,0,.88);align-items:center;justify-content:center;padding:30px;cursor:zoom-out}
+.image-modal.active{display:flex}
+.image-modal img{max-width:95vw;max-height:90vh;width:auto;height:auto;object-fit:contain;border-radius:10px;box-shadow:0 10px 40px rgba(0,0,0,.5)}
+.image-modal .close-modal{position:absolute;top:18px;right:28px;color:#fff;font-size:42px;line-height:1;cursor:pointer;user-select:none}
+.gallery img,.card img{cursor:zoom-in}
+</style>
 </head>
 <body><header>
   <div style="display:flex;align-items:center;gap:15px;"><select id="languageSwitcher" style="padding:8px;border-radius:10px;border:none;">
@@ -374,7 +381,12 @@ footer {
   <p>© 2026 Apartamentos Unibrisa | Todos los derechos reservados</p>
 </footer><a class="whatsapp" href="https://wa.me/34600000000" target="_blank">
   WhatsApp
-</a><script>
+</a>
+<div class="image-modal" id="imageModal" aria-hidden="true">
+  <span class="close-modal" id="closeImageModal" aria-label="Cerrar">&times;</span>
+  <img id="modalImage" src="" alt="Imagen ampliada">
+</div>
+<script>
 const translations = {
   es: {
     hero: 'Apartamentos Unibrisa',
@@ -411,5 +423,27 @@ bookingForm.addEventListener('submit', function(e){
     window.open('https://checkout.stripe.com/', '_blank');
   }, 1500);
 });
+
+const imageModal=document.getElementById('imageModal');
+const modalImage=document.getElementById('modalImage');
+const closeImageModal=document.getElementById('closeImageModal');
+document.querySelectorAll('.gallery img,.card img').forEach(img=>{
+  img.addEventListener('click',()=>{
+    modalImage.src=img.src;
+    modalImage.alt=img.alt||'Imagen ampliada';
+    imageModal.classList.add('active');
+    imageModal.setAttribute('aria-hidden','false');
+    document.body.style.overflow='hidden';
+  });
+});
+function closeModal(){
+  imageModal.classList.remove('active');
+  imageModal.setAttribute('aria-hidden','true');
+  modalImage.src='';
+  document.body.style.overflow='';
+}
+closeImageModal.addEventListener('click',closeModal);
+imageModal.addEventListener('click',e=>{if(e.target===imageModal)closeModal();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&imageModal.classList.contains('active'))closeModal();});
 </script></body>
 </html>
