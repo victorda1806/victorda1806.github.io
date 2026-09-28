@@ -315,37 +315,11 @@ footer {
     <h2>Tour del apartamento</h2>
     <p>Descubre el Apartamento A por dentro.</p>
   </div>
-
   <div class="video-container">
-
-    <div class="video-box" data-video="videos/salon.mp4" data-title="Salón">
-      <video muted playsinline preload="metadata">
-        <source src="videos/salon.mp4" type="video/mp4">
-      </video>
-      <h3>Salón</h3>
-    </div>
-
-    <div class="video-box" data-video="videos/cocina.mp4" data-title="Cocina">
-      <video muted playsinline preload="metadata">
-        <source src="videos/cocina.mp4" type="video/mp4">
-      </video>
-      <h3>Cocina</h3>
-    </div>
-
-    <div class="video-box" data-video="videos/habitacion.mp4" data-title="Habitación">
-      <video muted playsinline preload="metadata">
-        <source src="videos/habitacion.mp4" type="video/mp4">
-      </video>
-      <h3>Habitación</h3>
-    </div>
-
-    <div class="video-box" data-video="videos/bano.mp4" data-title="Baño">
-      <video muted playsinline preload="metadata">
-        <source src="videos/bano.mp4" type="video/mp4">
-      </video>
-      <h3>Baño</h3>
-    </div>
-
+    <div class="video-box"><h3>Salón</h3><video controls playsinline preload="metadata"><source src="videos/salon.mp4" type="video/mp4">Tu navegador no puede reproducir este vídeo.</video></div>
+    <div class="video-box"><h3>Cocina</h3><video controls playsinline preload="metadata"><source src="videos/cocina.mp4" type="video/mp4">Tu navegador no puede reproducir este vídeo.</video></div>
+    <div class="video-box"><h3>Habitación</h3><video controls playsinline preload="metadata"><source src="videos/habitacion.mp4" type="video/mp4">Tu navegador no puede reproducir este vídeo.</video></div>
+    <div class="video-box"><h3>Baño</h3><video controls playsinline preload="metadata"><source src="videos/bano.mp4" type="video/mp4">Tu navegador no puede reproducir este vídeo.</video></div>
   </div>
 </section>
 <section id="galeria">
@@ -420,14 +394,6 @@ footer {
 </footer><a class="whatsapp" href="https://wa.me/34600000000" target="_blank">
   WhatsApp
 </a>
-
-<div class="video-modal" id="videoModal" aria-hidden="true">
-  <span class="close-video" id="closeVideoModal" aria-label="Cerrar">&times;</span>
-  <video id="modalVideo" controls playsinline>
-    <source id="modalVideoSource" src="" type="video/mp4">
-  </video>
-</div>
-
 <div class="image-modal" id="imageModal" aria-hidden="true">
   <span class="close-modal" id="closeImageModal" aria-label="Cerrar">&times;</span>
   <img id="modalImage" src="" alt="Imagen ampliada">
@@ -491,40 +457,5 @@ function closeModal(){
 closeImageModal.addEventListener('click',closeModal);
 imageModal.addEventListener('click',e=>{if(e.target===imageModal)closeModal();});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&imageModal.classList.contains('active'))closeModal();});
-
-const videoModal = document.getElementById('videoModal');
-const modalVideo = document.getElementById('modalVideo');
-const modalVideoSource = document.getElementById('modalVideoSource');
-const closeVideoModal = document.getElementById('closeVideoModal');
-
-document.querySelectorAll('.video-box').forEach(box => {
-  box.addEventListener('click', () => {
-    modalVideoSource.src = box.dataset.video;
-    modalVideo.load();
-    videoModal.classList.add('active');
-    videoModal.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
-    modalVideo.play();
-  });
-});
-
-function closeVideo() {
-  modalVideo.pause();
-  modalVideo.currentTime = 0;
-  modalVideoSource.src = '';
-  modalVideo.load();
-  videoModal.classList.remove('active');
-  videoModal.setAttribute('aria-hidden', 'true');
-  document.body.style.overflow = '';
-}
-
-closeVideoModal.addEventListener('click', closeVideo);
-videoModal.addEventListener('click', e => {
-  if (e.target === videoModal) closeVideo();
-});
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape' && videoModal.classList.contains('active')) closeVideo();
-});
-
 </script></body>
 </html>
