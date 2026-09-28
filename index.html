@@ -219,15 +219,81 @@ footer {
 
 @media(max-width: 768px) {
   header {
+    padding: 12px 18px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  header h1 {
+    font-size: 1.25rem;
+  }
+
+  header > div:first-child {
+    display: none !important;
+  }
+
+  .menu-toggle {
+    display: flex;
+    width: 42px;
+    height: 42px;
+    border: none;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.12);
+    align-items: center;
+    justify-content: center;
     flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+  }
+
+  .menu-toggle span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: white;
+    border-radius: 2px;
   }
 
   nav {
-    margin-top: 10px;
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 12px;
+    right: 12px;
+    margin-top: 8px;
+    padding: 12px;
+    background: rgba(0,0,0,0.94);
+    backdrop-filter: blur(8px);
+    border-radius: 14px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    flex-direction: column;
+  }
+
+  nav.mobile-open {
+    display: flex;
+  }
+
+  nav a {
+    display: block;
+    margin: 0;
+    padding: 13px 12px;
+    border-radius: 9px;
+    font-size: 0.95rem;
+  }
+
+  nav a:hover {
+    background: rgba(255,255,255,0.08);
   }
 
   .hero-content h2 {
     font-size: 2.2rem;
+  }
+}
+
+@media(min-width: 769px) {
+  .menu-toggle {
+    display: none;
   }
 }
 
@@ -252,7 +318,10 @@ footer {
 
   </div>
   <h1>Apartamentos Unibrisa</h1>
-  <nav>
+  <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <nav id="mainNav">
     <a href="#inicio">Inicio</a>
     <a href="#apartamentos">Apartamentos</a>
     <a href="#servicios">Servicios</a>
@@ -399,6 +468,21 @@ footer {
   <img id="modalImage" src="" alt="Imagen ampliada">
 </div>
 <script>
+const menuToggle = document.getElementById('menuToggle');
+const mainNav = document.getElementById('mainNav');
+
+menuToggle.addEventListener('click', () => {
+  const isOpen = mainNav.classList.toggle('mobile-open');
+  menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+});
+
+mainNav.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    mainNav.classList.remove('mobile-open');
+    menuToggle.setAttribute('aria-expanded', 'false');
+  });
+});
+
 const translations = {
   es: {
     hero: 'Apartamentos Unibrisa',
