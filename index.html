@@ -414,21 +414,29 @@ footer {
     <h2>Reserva tu estancia</h2>
     <p>Completa el formulario y te contactaremos.</p>
   </div>  <div class="booking">
-    <form id="bookingForm">
-      <input type="text" placeholder="Nombre completo" required>
-      <input type="email" placeholder="Correo electrónico" required>
-      <input type="date" required>
-      <input type="date" required><select>
-    <option>Selecciona apartamento</option>
-    <option>Apartamento A</option>
-    <option>Apartamento B</option>
-  </select>
+    <form id="bookingForm" action="https://formsubmit.co/apartamentosunibrisa@gmail.com" method="POST">
+      <input type="hidden" name="_subject" value="Nueva solicitud de reserva - Apartamentos Unibrisa">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="true">
 
-  <textarea rows="5" placeholder="Mensaje adicional"></textarea>
+      <input type="text" name="Nombre" placeholder="Nombre" required>
+      <input type="text" name="Apellidos" placeholder="Apellidos" required>
+      <input type="email" name="Correo electrónico" placeholder="Correo electrónico" required>
 
-  <button type="submit" class="btn">Reservar y Pagar</button>
-  <div id="bookingMessage" style="font-weight:bold;color:green;"></div>
-</form>
+      <select name="Apartamento" required>
+        <option value="" disabled selected>Selecciona apartamento</option>
+        <option value="Apartamento A">Apartamento A</option>
+        <option value="Apartamento B">Apartamento B</option>
+      </select>
+
+      <input type="date" name="Entrada" required>
+      <input type="date" name="Salida" required>
+
+      <textarea name="Mensaje" rows="5" placeholder="Mensaje adicional"></textarea>
+
+      <button type="submit" class="btn">Reservar</button>
+      <div id="bookingMessage" style="font-weight:bold;color:green;"></div>
+    </form>
 
   </div>
 </section><section id="contacto">
@@ -509,15 +517,35 @@ langSwitcher.addEventListener('change', () => {
 });
 
 const bookingForm = document.getElementById('bookingForm');
+const bookingMessage = document.getElementById('bookingMessage');
+
 bookingForm.addEventListener('submit', function(e){
   e.preventDefault();
 
-  const message = document.getElementById('bookingMessage');
-  message.innerHTML = '✅ Reserva enviada correctamente. Redirigiendo al pago seguro...';
+  bookingMessage.style.color = 'green';
+  bookingMessage.textContent = 'Enviando solicitud de reserva...';
 
-  setTimeout(() => {
-    window.open('https://checkout.stripe.com/', '_blank');
-  }, 1500);
+  const formData = new FormData(bookingForm);
+
+  fetch(bookingForm.action, {
+    method: 'POST',
+    body: formData,
+    headers: {
+      'Accept': 'application/json'
+    }
+  })
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('No se pudo enviar la reserva.');
+    }
+
+    bookingMessage.textContent = '✅ Solicitud enviada correctamente. Te contactaremos por correo.';
+    bookingForm.reset();
+  })
+  .catch(error => {
+    bookingMessage.style.color = 'red';
+    bookingMessage.textContent = 'No se pudo enviar la solicitud. Inténtalo de nuevo.';
+  });
 });
 
 const imageModal=document.getElementById('imageModal');
