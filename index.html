@@ -238,6 +238,9 @@ footer {
 .image-modal img{max-width:95vw;max-height:90vh;width:auto;height:auto;object-fit:contain;border-radius:10px;box-shadow:0 10px 40px rgba(0,0,0,.5)}
 .image-modal .close-modal{position:absolute;top:18px;right:28px;color:#fff;font-size:42px;line-height:1;cursor:pointer;user-select:none}
 .gallery img,.card img{cursor:zoom-in}
+
+/* Tour del apartamento */
+.video-container{max-width:1000px;margin:30px auto;display:grid;grid-template-columns:repeat(2,1fr);gap:25px}.video-box{background:white;border-radius:20px;overflow:hidden;box-shadow:0 8px 25px rgba(0,0,0,.12)}.video-box h3{margin:0;padding:15px;text-align:center}.video-box video{display:block;width:100%;height:auto}@media(max-width:768px){.video-container{grid-template-columns:1fr}}
 </style>
 </head>
 <body><header>
@@ -253,6 +256,7 @@ footer {
     <a href="#inicio">Inicio</a>
     <a href="#apartamentos">Apartamentos</a>
     <a href="#servicios">Servicios</a>
+    <a href="#tour">Tour</a>
     <a href="#galeria">Galería</a>
     <a href="#reservas">Reservas</a>
     <a href="#contacto">Contacto</a>
@@ -306,7 +310,19 @@ footer {
     </div>
 
   </div>
-</section><section id="galeria">
+</section><section id="tour">
+  <div class="title">
+    <h2>Tour del apartamento</h2>
+    <p>Descubre el Apartamento A por dentro.</p>
+  </div>
+  <div class="video-container">
+    <div class="video-box"><h3>Salón</h3><video controls playsinline preload="metadata"><source src="videos/salon.mp4" type="video/mp4">Tu navegador no puede reproducir este vídeo.</video></div>
+    <div class="video-box"><h3>Cocina</h3><video controls playsinline preload="metadata"><source src="videos/cocina.mp4" type="video/mp4">Tu navegador no puede reproducir este vídeo.</video></div>
+    <div class="video-box"><h3>Habitación</h3><video controls playsinline preload="metadata"><source src="videos/habitacion.mp4" type="video/mp4">Tu navegador no puede reproducir este vídeo.</video></div>
+    <div class="video-box"><h3>Baño</h3><video controls playsinline preload="metadata"><source src="videos/bano.mp4" type="video/mp4">Tu navegador no puede reproducir este vídeo.</video></div>
+  </div>
+</section>
+<section id="galeria">
   <div class="title">
     <h2>Galería</h2>
     <p>Conoce nuestros espacios.</p>
